@@ -1,0 +1,394 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    letter-spacing: 1px;
+    font-family: 'Belanosima', sans-serif;
+  }
+  
+  *::selection {
+    color: whitesmoke;
+    background: black;
+  }
+  
+  body {
+    background-color: #ffebc4;
+  }
+  
+  #home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+  }
+  
+  .homepage {
+    width: 30%;
+    /* border: 10px solid red; */
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+  }
+  
+  .homepage h1 {
+    transition: .6s;
+  }
+  
+  .homepage h1.active {
+    text-shadow: 5px 5px rgb(178, 34, 34);
+  }
+  
+  .homepage p {
+    margin: 5px 20px;
+    font-size: 30px;
+    opacity: 0.8;
+    font-weight: 100;
+    transition: .6s;
+  }
+  
+  .homepage p.active {
+    text-shadow: 5px 5px rgb(178, 34, 34);
+  }
+  
+  
+  #how {
+    font-family: 'Belanosima', sans-serif;
+    /* border: 5px solid black; */
+    margin-top: 70px;
+    width: 80%;
+    margin: 0 auto;
+    /* background-color: black; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .feature.f-2 {
+    /* background-color: black; */
+  
+    width: 600px;
+  }
+  
+  .feature.f-1 {
+    /* background-color: brown; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 200px;
+    /* border-right: 20px solid black;*/
+    /*border-bottom: 13px solid black;*/
+  
+  }
+  
+  .feature.f-1 h1 {
+    font-size: 100px;
+    text-shadow: 20px 10px 3px rgb(178, 34, 34);
+  
+  }
+  
+  .feature,
+  .clock {
+    margin: 20px;
+  }
+  
+  .f-2 h3 {
+    font-size: 50px;
+  }
+  
+  .f-2 {
+    color: black;
+    margin-top: -30px;
+    padding: 20px;
+  }
+  
+  .f-2 p {
+    text-align: justify;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 30px;
+    padding-top: 20px;
+  }
+  
+  #true {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    font-size: 30px;
+    flex-wrap: wrap;
+    height: auto;
+    margin-top: 150px;
+    background-color: rgb(255, 196, 79);
+  }
+  
+  #true .true-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    /* text-align: center; */
+    margin-bottom: 50px;
+  }
+  #true .true-1 h1 {
+    font-size: 2em;
+  }
+  .clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 20px 0 20px 0;
+    /* background-color: red; */
+  }
+  
+  .clock .time {
+    position: absolute;
+    line-height: 10px;
+    display: flex;
+    justify-content: center;
+    color: wheat;
+    font-size: .5em;
+  
+  }
+  
+  .clock .time.sec {
+    width: 248px;
+    height: 248px;
+    border-radius: 50%;
+    border: 4px solid #39074E;
+    z-index: 0;
+  
+  }
+  
+  .clock .time.min {
+    width: 198px;
+    height: 198px;
+    border-radius: 50%;
+    border: 4px solid rgb(178, 34, 34);
+    z-index: 1;
+  }
+  
+  .clock .time.hr {
+    width: 98px;
+    height: 98px;
+    border-radius: 50%;
+    border: 4px solid black;
+    z-index: 2;
+  }
+  
+  .clock .time.sec::before {
+    content: "";
+    width: 17px;
+    height: 24px;
+    background-color: #39074E;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%);
+  }
+  
+  .clock .time.min::before {
+    content: "";
+    width: 17px;
+    height: 49px;
+    background-color: rgb(178, 34, 34);
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%);
+  }
+  
+  .clock .time.hr::before {
+    content: "";
+    width: 17px;
+    height: 46px;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: -1;
+  }
+  
+  .poem {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .poem .poem-1,
+  .poem .poem-2,
+  .poem .poem-3 {
+    margin: 50px;
+    color: black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: .6em;
+    transition: .6s;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .poem .poem-1 {
+    border: 5px solid black;
+  }
+  
+  .poem .poem-1 h1 {
+    opacity: 0;
+    font-size: 2px;
+    transition: 0.5s;
+  }
+  
+  .poem .poem-1.active h1 {
+    opacity: 1;
+    font-size: 20px;
+  }
+  
+  .poem .poem-1.active {
+    height: 120px;
+    width: 120px;
+    border-radius: 10px;
+  
+  }
+  
+  .poem .poem-2 {
+    background-color: black;
+  }
+  
+  .poem .poem-2 h1 {
+    color: white;
+    opacity: 0;
+    font-size: 2px;
+    transition: 0.5s;
+  }
+  
+  .poem .poem-2.active h1 {
+    opacity: 1;
+    font-size: 20px;
+  }
+  
+  .poem .poem-2.active {
+    height: 120px;
+    width: 120px;
+    border-radius: 10px;
+  
+  }
+  
+  .poem .poem-3 {
+    background-color: rgb(178, 34, 34);
+  }
+  
+  .poem .poem-3 h1 {
+    position: relative;
+    color: white;
+    opacity: 0;
+    font-size: 2px;
+    transition: .5s;
+  }
+  
+  .poem .poem-3.active h1 {
+    opacity: 1;
+    font-size: 15px;
+  }
+  
+  .poem .poem-3.active {
+    height: 120px;
+    width: 120px;
+    border-radius: 10px;
+  
+  }
+  .empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .kosong {
+    display: flex;
+    height: 100px ;
+    width: 100px;
+    /* border:10px solid black; */
+    align-items: center;
+    justify-content: center;
+    margin: 100px 0px;
+    font-size: 50px;
+    color: rgb(69, 192, 35);
+  
+  }
+
+  .reveal {
+    position: relative;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: .6s;
+    overflow: hidden;
+  }
+  .reveal.buka {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  
+  /* responsive css */
+  @media screen and (max-width:1097px) {
+    .homepage {
+      width: 50%;
+    }
+  }
+  
+  @media screen and (max-width :600px) {
+    #true .true-1 {
+      flex-direction: column;
+    }
+    #story {
+      padding: 10px;
+    }
+  
+    .poem {
+      flex-direction: column;
+    }
+  
+    .f-2 {
+      padding: 0;
+    }
+  
+    .f-2 h3 {
+      font-size: 43px;
+    }
+  
+    .homepage p {
+      font-size: 30px;
+    }
+  
+    .clock h1 {
+      font-size: 50px;
+    }
+  
+    .clock {
+      padding: 60px;
+      width: 100%;
+    }
+  
+    .homepage {
+      width: 100%;
+    }
+  }

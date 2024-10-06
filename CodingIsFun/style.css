@@ -1,0 +1,221 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+section {
+    height: 100vh;
+}
+
+
+.Profil {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 20%;
+    width: 100%;
+ }
+
+
+ .Profil > text {
+    font-size: small;
+ }
+
+
+
+
+
+.text {
+    text-align: center;
+    color: black;
+    margin: 10px;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 30px;
+}
+.sub {
+    font-weight: 1000;
+}
+
+
+.containerwrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 30%;
+    width: 100%;
+}
+
+.sosial {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height:0;
+    width: 100%;
+    bottom: 0;
+}
+
+.sosial .a .img {
+    height: 50px;
+    max-width: 50px;
+    margin: 40px;
+
+}
+.a:hover {
+    transform: scale(120%);
+    transition: all ease-in-out .2s;
+}
+
+
+
+
+.intro {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color:black;
+    transition: 1s;
+}
+
+.logo-header {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+
+.logo {
+    position: relative;
+    display: inline-block;
+    bottom: -20px;
+    opacity: 0;
+}
+
+.logo.active {
+    bottom: 0;
+    opacity: 1;
+    transition: ease-in-out 0.5s;
+}
+
+.logo.fade {
+    bottom:150px ;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+}
+
+.menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 50px;
+    backdrop-filter:blur(10px);
+    box-shadow: 0 15px 35px rgb(199, 227, 238);
+    display: flex;
+    justify-content: space-between;
+    transition: height 0.5s, width 0.5s;
+    overflow: hidden;
+
+}
+
+
+.menu.active {
+    width: 300px;
+    height:300px ;
+    box-shadow: 0 15px 35px rgb(199, 227, 238);
+    transition: height 0.5s, width 0.5s;
+    background-color:white;
+    
+}
+
+.menu .user {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+
+}
+
+
+.menu .butt {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menu .butt::before {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    background: black;
+    transform: translateY(-10px);
+    box-shadow: 0 10px black;
+    transition: 0.5s ;
+}
+
+.menu .butt::after {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 2px;
+    background:black;
+    transform: translateY(10px);
+    transition: 0.5s ;
+}
+
+.menu.active .butt::before {
+    transform: translateY(0px) rotate(45deg);
+    box-shadow: 0 0 black;
+}
+
+.menu.active .butt::after{
+    transform: translateY(0px) rotate(-45deg);
+
+}
+
+.help {
+    position: absolute;
+    width: 100%;
+    height: calc(100%-60px);
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu li {
+    list-style: none;
+}
+.menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
+    font-weight: 1000;
+}
+.menu li a:hover {
+    color: aqua;
+    transform: scale(120%);
+}

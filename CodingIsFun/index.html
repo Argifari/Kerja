@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css" />
+    <title>Projek</title>
+</head>
+<body>
+
+    <div class="intro">
+        <h1 class="logo-header">
+            <span class="logo">Argi</span><span class="logo">fari</span>
+        </h1>
+    </div>
+    <script >
+        let intro = document.querySelector('.intro');
+        let logo =document.querySelector('.logo-header');
+        let logoSpan = document.querySelectorAll('.logo');
+        
+        window.addEventListener('DOMContentLoaded', ()=> {
+            
+            setTimeout (()=>{
+               
+                logoSpan.forEach((span, idx)=>{
+                    setTimeout(()=>{
+                        span.classList.add('active');
+                    }, (idx +1) * 300)
+                });
+        
+                setTimeout(()=>{
+                    logoSpan.forEach((span, idx)=>{
+        
+                        setTimeout(()=>{
+                            span.classList.remove('active');
+                            span.classList.add('fade');
+                        },(idx +1)*30)
+                    })
+                },1700)
+        
+                setTimeout(()=>{
+                    intro.style.top ='-100vh';
+                },2000)
+            })
+        }) 
+        </script>
+
+    <div id ="home"class="container">
+        <header class="header">
+            <div class="hero">
+                <h2 class="heading">ARGIFARI</h2>
+                <p class="sub-heading">Just Ordinary Man</p>
+            </div>
+            <div class="features feature-1">
+                <h4 class="job">A student</h4>
+                <p class="age">17 years old</p>
+            </div>
+            <div class="features feature-2">
+                <h4 class="job">Newbie Proggrammer</h4>
+                <p class="age">3 Month</p>
+            </div>
+        </header>
+
+        <nav class="menu">
+
+
+            <!-- hamburger menu start -->
+            <div class="menu-flex">
+                <div class="user"></div>
+                <div class="butt"></div>
+                <ul class="help">
+                    <li class="h-1"><a class="a" href="#home" >Home</a></li>
+                    <li class="h-1"><a class="a"href="#about">About</a></li>
+                    <li class="h-1"><a class="a"href="">Reviews</a></li>
+                    <li class="h-1"><a class="a"href="">Contact</a></li>
+                </ul>
+            </div>
+            <script>
+                let butt = document.querySelector ('.butt');
+               let menu = document.querySelector ('.menu-flex');
+               butt.onclick = function () {
+            menu.classList.toggle('active')
+               }
+            </script>
+            <!-- hamburger menu end -->
+
+
+            <div class="brand">
+                <h1>ARGIFARI</h1>
+            </div>
+            <ul class="menu-list">
+                <li><a class="b" href="#home">Home</a></li>
+                <li><a class="b" href="#about">About</a></li>
+                <li><a class="b"href="">Reviews</a></li>
+                <li><a class="b"href="">Contact</a></li>
+            </ul>
+        </nav>
+
+       
+    </div>
+     <!-- ABOUT -->
+     
+</body>
+</html>
