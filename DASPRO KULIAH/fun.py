@@ -402,7 +402,7 @@ def AddP(P1,P2) :
             Pemb(P1)*Peny(P2) + Pemb(P2)*Peny(P1),
             Peny(P1)*Peny(P2)
         )
-#AYAM
+#AYAMdda
 def SubP(P1,P2) :
     return MakePecahanCampuran(
             Bil(P1) - Bil(P2), 
