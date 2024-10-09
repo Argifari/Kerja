@@ -1,159 +1,159 @@
 
 
-# DEFINISI DAN SPESIFIKASI
-# tagihan : character, real --> real
-    # {tagihan(kode,m) menghitung biaya tagihan bulanan dari sebuah perusahaan air}
-#
-# REALISASI
-#   tagihan(kode,m) :
-#       depend on kode 
-#           kode = 'A' : 30000 + (m - 10)*2500
-#           kode = 'B' : 40000 + (m - 10)*3000
-#           kode = 'C" : 50000 + (m - 10)*3500
-#
-# APLIKASI
-# => tagihan('A', 25) --> 67500
-# => tagihan('B', 50) --> 160000
-# => tagihan('c', 30) --> 120000
-#
-#
-def tagihan(kode,m):
-    if kode == 'A' :
-        return 30000 + (m - 10)*2500
-    elif kode == 'B':
-        return 40000 + (m - 10)*3000
-    elif kode == 'C':
-        return 50000 + (m - 10)*3500
+# # DEFINISI DAN SPESIFIKASI
+# # tagihan : character, real --> real
+#     # {tagihan(kode,m) menghitung biaya tagihan bulanan dari sebuah perusahaan air}
+# #
+# # REALISASI
+# #   tagihan(kode,m) :
+# #       depend on kode 
+# #           kode = 'A' : 30000 + (m - 10)*2500
+# #           kode = 'B' : 40000 + (m - 10)*3000
+# #           kode = 'C" : 50000 + (m - 10)*3500
+# #
+# # APLIKASI
+# # => tagihan('A', 25) --> 67500
+# # => tagihan('B', 50) --> 160000
+# # => tagihan('c', 30) --> 120000
+# #
+# #
+# def tagihan(kode,m):
+#     if kode == 'A' :
+#         return 30000 + (m - 10)*2500
+#     elif kode == 'B':
+#         return 40000 + (m - 10)*3000
+#     elif kode == 'C':
+#         return 50000 + (m - 10)*3500
 
 
-# APLIKASI
-print(tagihan('A',25))
-print(tagihan('B',50))
-print(tagihan('C',30))
+# # APLIKASI
+# print(tagihan('A',25))
+# print(tagihan('B',50))
+# print(tagihan('C',30))
 
 
-# DEFINISI DAN SPESIFIKASI
-# IsTomorrowFriday? : integer[1..31], integer[1..12], integer > 0 --> boolean
-#     {IsTomorrowFriday?(d,m,y) bernilai benar jika esok hari adalah jumat}
-# dpm : integer[1..12] --> integer
-#     {dpm(m) memberikan jumlah hari di setiap bulan yang dihitung dari 1 Januari di tahun terkait}
-# IsKabisat? : integer > 0 --> boolean
-#     {IsKabisat?(y) bernilai benar jika y habis dibagi 4, tapi tidak habis dibagi 100, atau y habis dibagi 400}
-# JumlahHari : integer[1..31], integer[1..12], integer > 0 --> integer
-#     {JumlahHari(d,m,y) menghitung jumlah total hari dari 1 Januari di tahun terkait dengan memperhatikan tahun kabisat}
+# # DEFINISI DAN SPESIFIKASI
+# # IsTomorrowFriday? : integer[1..31], integer[1..12], integer > 0 --> boolean
+# #     {IsTomorrowFriday?(d,m,y) bernilai benar jika esok hari adalah jumat}
+# # dpm : integer[1..12] --> integer
+# #     {dpm(m) memberikan jumlah hari di setiap bulan yang dihitung dari 1 Januari di tahun terkait}
+# # IsKabisat? : integer > 0 --> boolean
+# #     {IsKabisat?(y) bernilai benar jika y habis dibagi 4, tapi tidak habis dibagi 100, atau y habis dibagi 400}
+# # JumlahHari : integer[1..31], integer[1..12], integer > 0 --> integer
+# #     {JumlahHari(d,m,y) menghitung jumlah total hari dari 1 Januari di tahun terkait dengan memperhatikan tahun kabisat}
 
-# dpm(m) :
-#   depend on m
-#       m = 1 : 1
-#       m = 2 : 32
-#       m = 3 : 60
-#       m = 4 : 91
-#       m = 5 : 121
-#       m = 6 : 152
-#       m = 7 : 182
-#       m = 8 : 213
-#       m = 9 : 244
-#       m = 10 : 274
-#       m = 11 : 305
-#       m = 12 : 335
-# IsKabisat?(y): ((y mod 4) = 0 and (y mod 10 != 0)) or y mod 400 = 0
-# 
-# JumlahHari(d,m,y) :
-#   dpm(m) + d - 1 + if IsKabisat?(y) then 1 else 0
-#
-# IsTomorrowFriday(d,m,y):
-#   JumlahHari(d + 1,m,y) mod 7 = 5
-#
-#
-#
+# # dpm(m) :
+# #   depend on m
+# #       m = 1 : 1
+# #       m = 2 : 32
+# #       m = 3 : 60
+# #       m = 4 : 91
+# #       m = 5 : 121
+# #       m = 6 : 152
+# #       m = 7 : 182
+# #       m = 8 : 213
+# #       m = 9 : 244
+# #       m = 10 : 274
+# #       m = 11 : 305
+# #       m = 12 : 335
+# # IsKabisat?(y): ((y mod 4) = 0 and (y mod 10 != 0)) or y mod 400 = 0
+# # 
+# # JumlahHari(d,m,y) :
+# #   dpm(m) + d - 1 + if IsKabisat?(y) then 1 else 0
+# #
+# # IsTomorrowFriday(d,m,y):
+# #   JumlahHari(d + 1,m,y) mod 7 = 5
+# #
+# #
+# #
 
-# DEFINISI DAN SPESIFIKASI TYPE
-# type point : <x:real, y:real>
-#   {<x,y> adalah sebuah point dengan x adalah absis dan y adalah ordinat}
-# type line : <P1:point, P2:point>
-#   {<P1,P2> adalah sebuah garis dengan dua point}
-#
-# DEFINISI DAN SPESIFIKASI SELEKTOR
-# Absis : point --> real
-#   {Absis(P) memberikan absis x dari point, <x,y>}
-# Ordinat : point --> real
-#   {Ordinat(P) memberikan ordinat y dari point, <x,y>}
-# LinePoint1 : line --> point
-#   {LinePoint(L) memberikan point pertama(P1) dari line, <P1, P2>}
-# LinePoint2 : line --> point
-#   {LinePoint2(L) memberikan point kedua(P2) dari line, <P1, P2>}
-# 
-# DEFINISI DAN SPESIFIKASI KONSTRUKTOR
-# MakePoint : 2 real --> point
-#   {MakePoint(x,y) membentuk sebuah point dengan x adalah absis dan y adalah ordinat}
-# MakeLine : 2 point --> line
-#   {MakeLine(P1,P2) membentuk sebuah line dengan point 1 dan point 2.}
-#
-# DEFINISI DAN SPESIFIKASI FUNGSI/OPERATOR TERHADAP LINE
-# PanjangGaris : line --> real
-#   {PanjangGaris(L) menghitung panjang garis dari 2 point.}
-# 
-# DEFINSI DAN SPESIFIKASI FUNGIS PREDIKAT
-# IsKuadran3? : line --> boolean
-#   {IsKuadran3?(L) bernilai benar saat keseluruhan line berasda di kuadran 3.}
-#     
-# REALISASI FUNGSI/OPERATOR TERHADAP LINE
-# PanjangGaris(L) : 
-#      sqrt((Absis(LinePoint1(L)) - Absis(LinePoint2(L))) * (Absis(LinePoint1(L)) - Absis(LinePoint2(L))) + 
-#      (Ordinat(LinePoint1(L)) - Ordinat(LinePoint2(L))) * (Ordinat(LinePoint1(L)) - Ordinat(LinePoint2(L)))
-#
-# REALISAIS FUNGSI PREDIKAT
-# IsKuadran3?(L) :
-#       Absis(LinePoint1(L)) < 0 and Absis(LinePoint2(L)) < 0 
-#       and Ordinat(LinePoint1(L)) < 0 and Ordinat(LinePoint2(L))
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-
-
-
-def MakePoint(x,y):
-    return [x,y]
-
-def MakeLine(P1,P2):
-    return [P1,P2]
-
-def Absis(P):
-    return P[0]
-
-def Ordinat(P):
-    return P[1]
-
-def LinePoint1(L) :
-    return L[0]
-
-def LinePoint2(L) :
-    return L[1]
+# # DEFINISI DAN SPESIFIKASI TYPE
+# # type point : <x:real, y:real>
+# #   {<x,y> adalah sebuah point dengan x adalah absis dan y adalah ordinat}
+# # type line : <P1:point, P2:point>
+# #   {<P1,P2> adalah sebuah garis dengan dua point}
+# #
+# # DEFINISI DAN SPESIFIKASI SELEKTOR
+# # Absis : point --> real
+# #   {Absis(P) memberikan absis x dari point, <x,y>}
+# # Ordinat : point --> real
+# #   {Ordinat(P) memberikan ordinat y dari point, <x,y>}
+# # LinePoint1 : line --> point
+# #   {LinePoint(L) memberikan point pertama(P1) dari line, <P1, P2>}
+# # LinePoint2 : line --> point
+# #   {LinePoint2(L) memberikan point kedua(P2) dari line, <P1, P2>}
+# # 
+# # DEFINISI DAN SPESIFIKASI KONSTRUKTOR
+# # MakePoint : 2 real --> point
+# #   {MakePoint(x,y) membentuk sebuah point dengan x adalah absis dan y adalah ordinat}
+# # MakeLine : 2 point --> line
+# #   {MakeLine(P1,P2) membentuk sebuah line dengan point 1 dan point 2.}
+# #
+# # DEFINISI DAN SPESIFIKASI FUNGSI/OPERATOR TERHADAP LINE
+# # PanjangGaris : line --> real
+# #   {PanjangGaris(L) menghitung panjang garis dari 2 point.}
+# # 
+# # DEFINSI DAN SPESIFIKASI FUNGIS PREDIKAT
+# # IsKuadran3? : line --> boolean
+# #   {IsKuadran3?(L) bernilai benar saat keseluruhan line berasda di kuadran 3.}
+# #     
+# # REALISASI FUNGSI/OPERATOR TERHADAP LINE
+# # PanjangGaris(L) : 
+# #      sqrt((Absis(LinePoint1(L)) - Absis(LinePoint2(L))) * (Absis(LinePoint1(L)) - Absis(LinePoint2(L))) + 
+# #      (Ordinat(LinePoint1(L)) - Ordinat(LinePoint2(L))) * (Ordinat(LinePoint1(L)) - Ordinat(LinePoint2(L)))
+# #
+# # REALISAIS FUNGSI PREDIKAT
+# # IsKuadran3?(L) :
+# #       Absis(LinePoint1(L)) < 0 and Absis(LinePoint2(L)) < 0 
+# #       and Ordinat(LinePoint1(L)) < 0 and Ordinat(LinePoint2(L))
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
+# #
 
 
-def kuadran3(L) :
-    return  Absis(
-            LinePoint1(L)) < 0 and Absis(
-            LinePoint2(L)) < 0 and (Ordinat(
-            LinePoint1(L)) < 0 and Ordinat(
-            LinePoint2(L)) < 0)
+
+# def MakePoint(x,y):
+#     return [x,y]
+
+# def MakeLine(P1,P2):
+#     return [P1,P2]
+
+# def Absis(P):
+#     return P[0]
+
+# def Ordinat(P):
+#     return P[1]
+
+# def LinePoint1(L) :
+#     return L[0]
+
+# def LinePoint2(L) :
+#     return L[1]
 
 
-print(kuadran3(MakeLine(MakePoint(-1,-2), MakePoint(-3,-5))))
+# def kuadran3(L) :
+#     return  Absis(
+#             LinePoint1(L)) < 0 and Absis(
+#             LinePoint2(L)) < 0 and (Ordinat(
+#             LinePoint1(L)) < 0 and Ordinat(
+#             LinePoint2(L)) < 0)
+
+
+# print(kuadran3(MakeLine(MakePoint(-1,-2), MakePoint(-3,-5))))
 
 
 
@@ -392,9 +392,15 @@ def MakePecahan(n,d) :
 
 def KonversiPecahan(P) :
     if Bil(P) < 0 :
-        return MakePecahan(Bil(P)*PenyPecahanCampuran(P) - PembPecahanCampuran(P), PenyPecahanCampuran(P))
+        return MakePecahan(
+                Bil(P)*PenyPecahanCampuran(P) - PembPecahanCampuran(P), 
+                PenyPecahanCampuran(P)
+            )
     else :
-        return MakePecahan(Bil(P)*PenyPecahanCampuran(P) + PembPecahanCampuran(P), PenyPecahanCampuran(P))
+        return MakePecahan(
+                Bil(P)*PenyPecahanCampuran(P) + PembPecahanCampuran(P), 
+                PenyPecahanCampuran(P)
+            )
 
 def KonversiReal(P):
     if Bil(P) < 0:
@@ -417,13 +423,32 @@ def SubP(P1,P2) :
         )
 
 def DivP(P1,P2) :
-    return MakePecahanCampuran(
-            PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) / 
-            PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2)),
-            
+    return MakePecahan(
+            PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)),
+            PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))
         )
 
-print(KonversiReal(MakePecahanCampuran(2,3,4)))
+def MulP(P1,P2) :
+    return MakePecahan(
+            PembPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2)),
+            PenyPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))
+        )
+
+def EqP(P1,P2) :
+    return (PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) 
+            == PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1)))
+
+def LtP(P1,P2) :
+    return (PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) 
+            < PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1)))
+
+def GtP(P1,P2) :
+    return (PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) 
+            > PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1))) 
+
+
+
+print(EqP(MakePecahanCampuran(2,3,4), MakePecahanCampuran(2,3,4)))
 
 
 
