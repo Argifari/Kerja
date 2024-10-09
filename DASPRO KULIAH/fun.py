@@ -412,7 +412,7 @@ def SubP(P1,P2) :
 
 def DivP(P1,P2) :
     return MakePecahanCampuran(
-            
+
         )
 print(KonversiReal(MakePecahanCampuran(2,3,4)))
 
