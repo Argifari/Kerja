@@ -369,10 +369,52 @@ print(kuadran3(MakeLine(MakePoint(-1,-2), MakePoint(-3,-5))))
 
 
 
+def Bil(P) :
+    return P[0]
 
+def Pemb(P) :
+    return P[1]
 
+def Peny(P) :
+    return P[2]
 
+def MakePecahanCampuran(bil,n,d) :
+    return [bil,n,d]
 
+def MakePecahan(n,d) :
+    return [n,d]
+
+def KonversiPecahan(P) :
+    if Bil(P) < 0 :
+        return MakePecahan(Bil(P)*Peny(P) - Pemb(P), Peny(P))
+    else :
+        return MakePecahan(Bil(P)*Peny(P) + Pemb(P), Peny(P))
+
+def KonversiReal(P):
+    if Bil(P) < 0:
+        return Bil(P) - Pemb(P) / Peny(P)
+    else :
+        return Bil(P) + Pemb(P) / Peny(P) 
+
+def AddP(P1,P2) :
+    return MakePecahanCampuran(
+            Bil(P1) + Bil(P2), 
+            Pemb(P1)*Peny(P2) + Pemb(P2)*Peny(P1),
+            Peny(P1)*Peny(P2)
+        )
+
+def SubP(P1,P2) :
+    return MakePecahanCampuran(
+            Bil(P1) - Bil(P2), 
+            Pemb(P1)*Peny(P2) - Pemb(P2)*Peny(P1),
+            Peny(P1)*Peny(P2)
+        )
+
+def DivP(P1,P2) :
+    return MakePecahanCampuran(
+            
+        )
+print(KonversiReal(MakePecahanCampuran(2,3,4)))
 
 
 
