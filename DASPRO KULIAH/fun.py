@@ -369,6 +369,12 @@
 
 
 
+
+# NO 1 TIPE BENTUKAN PECAHAN CAMPURAN
+# =================================================
+# =================================================
+
+
 def Bil(P) :
     return P[0]
 
@@ -446,13 +452,74 @@ def GtP(P1,P2) :
     return (PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) 
             > PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1))) 
 
+#print(EqP(MakePecahanCampuran(2,3,4), MakePecahanCampuran(2,3,4)))
 
 
-print(EqP(MakePecahanCampuran(2,3,4), MakePecahanCampuran(2,3,4)))
+# NO 2 TIPE BENTUKAN GARIS
+# ==============================================
+# ==============================================
 
 
+def MakePoint(x,y):
+    return [x,y]
+
+def Absis(P) :
+    return P[0]
+
+def Ordinat(P):
+    return P[1]
+
+def MakeGaris(P1,P2) :
+    return [P1,P2]
+
+def GarisPoint1(L) :
+    return L[0]
+
+def GarisPoint2(L) :
+    return L[1]
+
+def Gradien(L) :
+    if (Ordinat(GarisPoint1(L)) - Ordinat(GarisPoint2(L)) == 0) :
+        if (Absis(GarisPoint1(L)) - Absis(GarisPoint2(L)) == 0) :
+            return float('inf')
+        else :
+            return 0
+    
+    elif (Absis(GarisPoint1(L)) - Absis(GarisPoint2(L)) == 0) :
+        return float('inf')
+    
+    else :
+        return (    (Ordinat(GarisPoint1(L)) - Ordinat(GarisPoint2(L))) 
+                                / 
+                    (Absis(GarisPoint1(L)) - Absis(GarisPoint2(L)))
+                )
+
+def PanjangGaris(P1,P2) :
+    return ((Absis(P1) - Absis(P2))**2 + (Ordinat(P1) - Ordinat(P2))**2)**0.5
+
+def IsSejajar(L1,L2) :
+    return Gradien(L1) == Gradien(L2)
+
+def IsTegakLurus(L1,L2):
+    if Gradien(L1) == float('inf') :
+        if Gradien(L2) == 0 :
+            return True
+        else :
+            return False
+    elif Gradien(L2) == float('inf') :
+        if Gradien(L1) == 0:
+            return True
+        else :
+            return False
+    else :
+        return (Gradien(L1) * Gradien(L2) == -1)
+        
 
 
+print(Gradien(MakeGaris(MakePoint(1,2), MakePoint(2,1))))
+print(IsSejajar(MakeGaris(MakePoint(1,2), MakePoint(3,2)), MakeGaris(MakePoint(1,2),MakePoint(2,2))))
+
+print(IsTegakLurus(MakeGaris(MakePoint(0,0), MakePoint(5,0)), MakeGaris(MakePoint(1,0),MakePoint(1,-10))))
 
 
 
