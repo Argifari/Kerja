@@ -231,8 +231,12 @@ def IsTegakLurus(G1,G2):
 # APLIKASI DALAM PYTHON
 
 print(Gradien(MakeGaris(MakePoint(1,2), MakePoint(2,1))))
-print(IsSejajar(MakeGaris(MakePoint(1,2), MakePoint(3,2)), MakeGaris(MakePoint(1,2),MakePoint(2,2))))
-print(IsTegakLurus(MakeGaris(MakePoint(0,0), MakePoint(5,0)), MakeGaris(MakePoint(1,0),MakePoint(1,-10))))
+
+print(IsSejajar(MakeGaris(MakePoint(1,2), MakePoint(3,2)), 
+                MakeGaris(MakePoint(1,2),MakePoint(2,2))))
+
+print(IsTegakLurus(MakeGaris(MakePoint(0,0), MakePoint(5,0)), 
+                    MakeGaris(MakePoint(1,0),MakePoint(1,-10))))
 
 
 
