@@ -1,3 +1,8 @@
+# Muhammad Firdaus Argifari
+
+
+
+
 # NO 1 TIPE BENTUKAN PECAHAN CAMPURAN
 # =================================================
 # =================================================
@@ -142,6 +147,13 @@ print(SubP(MakePecahanCampuran(1,1,2), MakePecahanCampuran(2,1,2)))
 print(IsEqP(MakePecahanCampuran(2,3,4), MakePecahanCampuran(2,3,4)))
 print(DivP(MakePecahanCampuran(2,1,2), MakePecahanCampuran(2,1,2)))
 print(MulP(MakePecahanCampuran(2,1,2),MakePecahanCampuran(2,1,2)))
+
+
+
+
+
+
+
 # NO 2 TIPE BENTUKAN GARIS
 # ==============================================
 # ==============================================
