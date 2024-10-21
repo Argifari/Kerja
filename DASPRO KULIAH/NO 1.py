@@ -1,23 +1,52 @@
 
-# Nama File : NO 1.py
-# Deskripsi : Operasi Aritmatika Pengurangan
-# Tanggal   : 1 Oktober 2024
-# Pembuat   : Muhammad Firdaus Argifari 24060124130107
+# i = 1
+# while i <= 3 :
+#     print("case",i)
+#     hargaTahu = input("Harga tahu: ")
+#     hargaTempe = input("Harga tempe: ")
+#     hargaRoti = input("Harga roti: ")
 
-# DEFINISI DAN SPESIFIKASI 
-# AritmatikaPengurangan : 2 integer --> integer
-    # {AritmatikaPengurangan(x,y) fungsi pengurangan x oleh y, x - y}
-
-# REALISASI 
-
-def AritmatikaPengurangan(x,y):
-    if y == 0 :
-        return x
-    
-    return AritmatikaPengurangan(x, y - 1) - 1
+#     TotalBiaya = int(hargaTahu)*4 + int(hargaTempe)*4 + int(hargaRoti)*5
+#     BiayaAkhir = TotalBiaya - TotalBiaya*5/100
 
 
-# APLIKASI
-print(AritmatikaPengurangan(5,4)) # --> 1
-print(AritmatikaPengurangan(5,3)) # --> 2
-print(AritmatikaPengurangan(10,2)) # --> 8
+#     if len(str(TotalBiaya)) == 5:
+#         jumlahPerDigit = (TotalBiaya % 10) + ((TotalBiaya//10) % 10) + ((TotalBiaya//100) % 10) + ((TotalBiaya//1000) % 10) + ((TotalBiaya//10000) % 10)
+#         if jumlahPerDigit % 7 == 0 :
+#             BiayaAkhir -= BiayaAkhir*10/100
+
+
+#     print("Nona Deb perlu membayar sebesar",int(BiayaAkhir))
+#     i += 1  
+
+
+
+HargaAwal = int(input("Masukkan harga awal barang: "))
+JumlahPenawaran = int(input("Masukkan jumlah penawaran: "))
+
+if JumlahPenawaran == 1: 
+    print("Total biaya yang harus dibayar adalah", int(HargaAwal))
+elif JumlahPenawaran == 2:
+    HargaAwal += HargaAwal*10/100
+    if HargaAwal > 100000000 :
+        HargaAwal -= 5000000
+    print("Total biaya yang harus dibayar adalah", int(HargaAwal))
+elif JumlahPenawaran == 3:
+    HargaAwal += HargaAwal*10/100
+    if HargaAwal > 100000000 :
+        HargaAwal -= 5000000
+    HargaAwal += HargaAwal*10/100
+    if HargaAwal > 50000000 :
+        HargaAwal -= HargaAwal*20/100
+    print("Total biaya yang harus dibayar adalah", int(HargaAwal))
+
+else:
+    print("Total biaya yang harus dibayar adalah 0")
+
+
+
+
+
+
+
+
