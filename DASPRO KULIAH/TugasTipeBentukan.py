@@ -30,16 +30,16 @@
 #
 # DEFINISI DAN SPESIFIKASI FUNGSI/OPERATOR TERHADAP PECAHAN CAMPURAN
 # KonversiPecahan : pecahanCampuran --> pecahan
-#   {KonversiPecahan(P) mengkonversi sebuah pecahan campuran menjadi pecahan.}
+#   {KonversiPecahan(P) mengonversi sebuah pecahan campuran menjadi pecahan.}
 # KonversiReal : pecahanCampuran --> real
-#   {KonversiReal(P) mengkonversi sebuah pecahan campuran menjadi bilangan real.}
+#   {KonversiReal(P) mengonversi sebuah pecahan campuran menjadi bilangan real.}
 # AddP : 2 pecahanCampuran --> pecahanCampuran
 #   {AddP(P1,P2) menambahkan pecahan campuran P1 dengan pecahan campuran P2.}
 # SubP : 2 pecahanCampuran --> pecahanCampuran
 #   {SubP(P1,P2) mengurangi pecahan campuran P1 dengan pecahan campuran P2.}
-# DivP : 2 pecahanCampuran --> pecahan
+# DivP : 2 pecahanCampuran --> pecahanCampuran
 #   {DivP(P1,P2) membagi pecahan campuran P1 dengan pecahan campuran P2.}
-# MulP : 2 pecahanCampuran --> Pecahan
+# MulP : 2 pecahanCampuran --> pecahanCampuran
 #   {MulP(P1,P2) mengalikan pecachan campuran P1 dengan pecahan campuran P2}
 #
 # DEFINISI DAN SPESIFIKASI PREDIKAT
@@ -106,17 +106,25 @@ def SubP(P1,P2) :
         )
 
 def DivP(P1,P2) :
-    return MakePecahan(
-            PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)),
-            PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))
-        )
+    return MakePecahanCampuran( 
+                PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))// 
+                (PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))),
+                PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) % 
+                (PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))),
+                PenyPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))
+
+            )
 
 def MulP(P1,P2) :
-    return MakePecahan(
-            PembPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2)),
-            PenyPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))
-        )
+    return MakePecahanCampuran( 
+                PembPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2))// 
+                (PenyPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))),
+                PembPecahan(KonversiPecahan(P1))*PembPecahan(KonversiPecahan(P2)) % 
+                (PenyPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))),
+                PenyPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2))
 
+            )
+    
 def IsEqP(P1,P2) :
     return (PembPecahan(KonversiPecahan(P1))*PenyPecahan(KonversiPecahan(P2)) 
             == PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1)))
@@ -130,9 +138,10 @@ def IsGtP(P1,P2) :
             > PembPecahan(KonversiPecahan(P2))*PenyPecahan(KonversiPecahan(P1))) 
 
 # APLIKASI DALAM PYTHON
+print(SubP(MakePecahanCampuran(1,1,2), MakePecahanCampuran(2,1,2)))
 print(IsEqP(MakePecahanCampuran(2,3,4), MakePecahanCampuran(2,3,4)))
-
-
+print(DivP(MakePecahanCampuran(2,1,2), MakePecahanCampuran(2,1,2)))
+print(MulP(MakePecahanCampuran(2,1,2),MakePecahanCampuran(2,1,2)))
 # NO 2 TIPE BENTUKAN GARIS
 # ==============================================
 # ==============================================
