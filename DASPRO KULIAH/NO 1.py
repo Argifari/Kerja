@@ -1,3 +1,4 @@
+
 # NAMA FILE : NO 1.py
 # Deskripsi : berisi type dan operasi list
 # Pembuat : Muhammad Firdaus Argifari
