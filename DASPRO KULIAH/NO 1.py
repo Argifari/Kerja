@@ -181,7 +181,7 @@ print(AvgElmt([1,1,1,1]))
 #   {CountMax(x,L) mengembalikan jumlah banyaknya x dalam list L}
 
 # REALISASI
-
+#
 def max2(a,b):
     if a > b:
         return a
