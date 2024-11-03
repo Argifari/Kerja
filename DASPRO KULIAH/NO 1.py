@@ -194,7 +194,7 @@ def MaxElmt(L):
     else:
         return max2(FirstElmt(L),MaxElmt(Tail(L)))
 
-print(MaxElmt([1,7,3,4,5]),"2222")
+print(MaxElmt([1,7,3,4,5]))
 
 # CountMax : integer, List of integer --> integer
 #   {CountMax(x,L) menghitung jumlah banyaknya x yang muncul di list L}
