@@ -218,7 +218,7 @@ def Gradien(G) :
             return float('inf')
         else :
             return 0
-    
+    #
     elif (Absis(GarisPoint1(G)) - Absis(GarisPoint2(G)) == 0) :
         return float('inf')
     
