@@ -2,7 +2,7 @@
 # Deskripsi : berisi type dan operasi list
 # Pembuat : Muhammad Firdaus Argifari
 # Tanggal : 29 Oktober 2024
-
+#FLDSJFLSDJFLK
 # DEFINISI DAN SPESIFIKASI TYPE
 # Konstruktor menambahan elemen di awal, notasi prefix
 # type List : [] atau [e o List]
