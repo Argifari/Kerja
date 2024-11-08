@@ -13,7 +13,7 @@ from list import*
 
 # DEFINISI DAN SPESIFIKASI OPERASI LIST YANG DIPERLUKAN UNTUK HIMPUNAN
 # Rember : elemen, list --> list
-# {Rember(e,L) menghapus sebuah elemen x dari list L
+# {Rember(x,L) menghapus sebuah elemen x dari list L
 #   jika x ada di list L, maka elemen L berkurang 1.
 #   jika x tidak ada di list L maka L tetap.
 #   List kosong tetap menjadi list kosong.}
