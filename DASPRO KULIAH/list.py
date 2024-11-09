@@ -1,4 +1,4 @@
-
+from typing import Union, List
 # NAMA FILE : NO 1.py
 # Deskripsi : berisi type dan operasi list
 # Pembuat : Muhammad Firdaus Argifari
@@ -18,10 +18,10 @@
 
 # REALISASI
 
-def Konso(e,l):
+def Konso(e:any,l:list) -> list:
     return [e] + l
 
-def Konsi(L,e) :
+def Konsi(L:list,e:any) -> list :
     return L + [e]
 
 # DEFINISI DAN SPESIFIKASI SELEKTOR
@@ -32,10 +32,10 @@ def Konsi(L,e) :
 
 # REALISASI
 
-def FirstElmt(L):
+def FirstElmt(L:list) -> any:
     return L[0]
 
-def LastElmt(L):
+def LastElmt(L:list) -> any:
     return L[-1]
 
 # Tail : List tidak kosong --> List
@@ -45,10 +45,10 @@ def LastElmt(L):
 
 # REALISASI
 
-def Tail(L):
+def Tail(L:list) -> list:
     return L[1:]
 
-def Head(L):
+def Head(L:list) -> list:
     return L[:-1]
 
 # DEFINISI DAN SPESIFIKASI PREDIKAT
@@ -59,10 +59,10 @@ def Head(L):
 
 # REALISASI
 
-def IsEmpty(L) :
+def IsEmpty(L:list) -> bool :
     return L == []
 
-def IsOneElmt(L):
+def IsOneElmt(L:list) -> bool:
     return Head(L) == [] and Tail(L) == []
 
 # DEFINISI DAN SPESIFIKASI FUNGSI YANG MENGOPERASIKAN LIST
@@ -71,7 +71,7 @@ def IsOneElmt(L):
 
 # REALISASI
 
-def NbElmt(L):
+def NbElmt(L:list) -> int:
     if IsEmpty(L):
         return 0
     else :
@@ -83,21 +83,21 @@ def NbElmt(L):
 
 # REALISASI
 
-def ElmtKeN(N,L):
+def ElmtKeN(N:int,L:list) -> any:
     if N == 0:
-        return L[0]
+        return FirstElmt(L)
     else :
         return ElmtKeN(N - 1, Tail(L))
     
 
-print(ElmtKeN(2,[1,2,3]))
+#print(ElmtKeN(2,[1,2,3]))
 
 # IsMember: elemen, List --> boolean
 #   {IsMember(x,L) bernilai benar jika X adalah elemen list L}
 
 # REALISASI
 
-def IsMember(X,L):
+def IsMember(X:any,L:list) -> bool:
     if IsEmpty(L) :
         return False
     else: 
@@ -106,40 +106,40 @@ def IsMember(X,L):
         else :
             return IsMember(X,Tail(L))
 
-print(IsMember(5,[1,3,4,5]))
+#print(IsMember(5,[1,3,4,5]))
 
 # Copy : List --> List
 #   {Copy(L) menghasilkan list yang identik dengan list asal}
 
 # REALISASI
 
-def Copy(L):
+def Copy(L:list) -> list:
     if IsEmpty(L):
         return []
     else :
         return Konso(FirstElmt(L),Copy(Tail(L)))
     
-print(Copy([1,2,3]))
+#print(Copy([1,2,3]))
 
 # Inverse : List --> List
 #   {Inverse(L) menghasilkan list L yang dibalik, yaitu urutan elemennya}
 
 # REALISASI
 
-def Inverse(L):
+def Inverse(L:list) -> list:
     if IsEmpty(L):
         return []
     else :
         return Konsi(Inverse(Tail(L)),FirstElmt(L))
 
-print(Inverse([1,2,3]))
+#print(Inverse([1,2,3]))
 
 # Konkat: 2 List --> List
 #   {Konkat(L1,L2) menghasilkan konkatenasi 2 buah list dengan list L2 sesudah list L1}
 
 # REALISASI
 
-def Konkat(L1,L2):
+def Konkat(L1:list,L2:list) -> list:
     if IsEmpty(L1) and IsEmpty(L2):
         return []
     if not IsEmpty(L1) : 
@@ -149,30 +149,31 @@ def Konkat(L1,L2):
     else :
         return []
     
-print(Konkat([1,2,3],[4,5,6,7,8,9]))
+#print(Konkat([1,2,3],[4,5,6,7,8,9]))
 
 # SumElmt : List of integer --> integer
 #   {SumElmt(L) menghasilkan jumlahan dari setiap elemen di list}
 
 # REALISASI
 
-def SumElmt(L) :
+def SumElmt(L:List[Union[int,float]]) -> int :
     if IsEmpty(L):
         return 0
     else :
         return FirstElmt(L) + SumElmt(Tail(L))
     
-print(SumElmt([1,1,1,1]))
+#print(SumElmt([1,1,1,1]))
 
 # AvgElmt : List of integer --> integer
 #   {AvgElmt(L) menghasilkan nilai rata - rata}
 
 # REALISASI
 
-def AvgElmt(L) :
+def AvgElmt(L:List[Union[int,float]]) -> float :
+    if NbElmt(L) == 0: return 0
     return SumElmt(L) // NbElmt(L)
 
-print(AvgElmt([1,1,1,1]))
+#print(AvgElmt([1,1,1,1]))
 
 # MaxElmt : List of integer --> integer
 #   {MaxElmt(L) mengembalikan elemen maksimum dari list}
@@ -183,19 +184,21 @@ print(AvgElmt([1,1,1,1]))
 
 # REALISASI
 
-def max2(a,b):
+def max2(a:Union[int,float],b:Union[int,float]) -> Union[int,float]:
     if a > b:
         return a
     else :
         return b
 
-def MaxElmt(L):
+def MaxElmt(L:List[Union[int,float]]) -> Union[int,float]:
+    # if IsEmpty(L):
+    #     return 0
     if IsOneElmt(L):
         return FirstElmt(L)
     else:
         return max2(FirstElmt(L),MaxElmt(Tail(L)))
 
-print(MaxElmt([1,7,3,4,5]))
+#print(MaxElmt([1,7,3,4,5]))
 
 # CountMax : integer, List of integer --> integer
 #   {CountMax(x,L) menghitung jumlah banyaknya x yang muncul di list L}
@@ -206,7 +209,7 @@ print(MaxElmt([1,7,3,4,5]))
 
 # REALISASI
 
-def CountMax(x,L):
+def CountMax(x:Union[int,float],L:List[Union[int,float]]) -> int:
     if IsEmpty(L):
         return 0
     else:
@@ -215,10 +218,10 @@ def CountMax(x,L):
         else :
             return CountMax(x,Tail(L))
 
-def MaxNb(L):
+def MaxNb(L:list) -> type:
     return [MaxElmt(L), CountMax(MaxElmt(L),L)]
     
-print(MaxNb([1,2,2,3,4,4,4]))
+#print(MaxNb([1,2,2,3,4,4,4]))
 
 # AddList : 2 List of integer --> List of integer
 #   {AddList(L1,L2) menghasilkan list baru yang setiap elemennya 
@@ -226,13 +229,13 @@ print(MaxNb([1,2,2,3,4,4,4]))
 
 # REALISASI
 
-def AddList(L1,L2):
+def AddList(L1:List[Union[int,float]],L2:List[Union[int,float]]) -> List[Union[int,float]]:
     if IsEmpty(L1) and IsEmpty(L2) :
         return []
     else :
         return Konso(FirstElmt(L1) + FirstElmt(L2), AddList(Tail(L1), Tail(L2)))
 
-print(AddList([1,2,3],[1,1,1]))
+#print(AddList([1,2,3],[1,1,1]))
 
 # HeadTail : List --> List
 #   {HeadTail(L) mengembalikan list dengan tanpa elemen pertama dan elemen terakhir}
@@ -240,11 +243,11 @@ print(AddList([1,2,3],[1,1,1]))
 #   {IsPalindrom(L) benar jika L merupakan kata palindrom, 
 #   yaitu kata yang sama jika dibaca dari kiri atau kanan.}
 
-def HeadTail(L):
+def HeadTail(L:list) -> any:
     return L[1:-1]
 
 
-def IsPalindrom(L):
+def IsPalindrom(L:List[chr]) -> bool:
     if not IsEmpty(L):
         if FirstElmt(L) != LastElmt(L):
             return False
@@ -253,4 +256,4 @@ def IsPalindrom(L):
     else :
         return True
 
-print(IsPalindrom(["a","a"]))
+#print(IsPalindrom(["a","a"]))

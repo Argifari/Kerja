@@ -1,31 +1,33 @@
-let intro = document.querySelector('.intro');
-let logo =document.querySelector('.logo-header');
-let logoSpan = document.querySelectorAll('.logo');
+// let intro = document.querySelector('.intro');
+// let logo =document.querySelector('.logo-header');
+// let logoSpan = document.querySelectorAll('.logo');
 
-window.addEventListener('DOMContentLoaded', ()=> {
+// window.addEventListener('DOMContentLoaded', ()=> {
     
-    setTimeout (()=>{
+//     setTimeout (()=>{
        
-        logoSpan.forEach((span, idx)=>{
-            setTimeout(()=>{
-                span.classList.add('active');
-            }, (idx +1) * 400)
-        });
+//         logoSpan.forEach((span, idx)=>{
+//             setTimeout(()=>{
+//                 span.classList.add('active');
+//             }, (idx +1) * 400)
+//         });
 
-        setTimeout(()=>{
-            logoSpan.forEach((span, idx)=>{
+//         setTimeout(()=>{
+//             logoSpan.forEach((span, idx)=>{
 
-                setTimeout(()=>{
-                    span.classList.remove('active');
-                    span.classList.add('fade');
-                },(idx +1)*50)
-            })
-        },2000)
+//                 setTimeout(()=>{
+//                     span.classList.remove('active');
+//                     span.classList.add('fade');
+//                 },(idx +1)*50)
+//             })
+//         },2000)
 
-        setTimeout(()=>{
-            intro.style.top ='-100vh';
-        },2300)
-    })
-}) 
+//         setTimeout(()=>{
+//             intro.style.top ='-100vh';
+//         },2300)
+//     })
+// }) 
 
+const ayam = 'babi';
+module.exports = ayam;
 
