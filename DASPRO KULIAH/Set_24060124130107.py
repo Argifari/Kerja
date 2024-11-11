@@ -28,7 +28,7 @@ def Rember(x,L):
             return Tail(L)
         else:
             return Konso(FirstElmt(L),Rember(x,Tail(L)))
-
+            
 # REALISASI VERSI 2
 
 def Rember2(x,L):
@@ -40,14 +40,13 @@ def Rember2(x,L):
         else:
             return Konsi(Rember2(x,Head(L)),LastElmt(L))
         
-# print(Rember2(2,[2,2,3,4,5]))
-
 # MultiRember : elemen, list -> list
 # {MultiRember(x,L) menghapus semua kemunculan elemen x dari list L
 #   List baru yang dihasilkan tidak lagi memiliki elemen x.
 #   List kosong tetap menjadi list kosong.}
 
 # REALISASI
+
 def MultiRember(x,L):
     if IsEmpty(L):
         return []
@@ -56,7 +55,6 @@ def MultiRember(x,L):
             return MultiRember(x,Tail(L))
         else:
             return Konso(FirstElmt(L), MultiRember(x,Tail(L)))
-
 
 # DEFINISI DAN SPESIFIKASI KONSTRUKTOR SET DARI LIST
 # MakeSet : list --> set
@@ -115,7 +113,7 @@ def IsSet(L):
             return False
         else:
             return IsSet(Tail(L))
-print(IsSet([2,3,4,5,2]))
+
 def IsSubset(H1,H2):
     if IsEmpty(H1):
         return True
@@ -136,7 +134,6 @@ def IsEqualSetVersi2(H1,H2):
             return IsEqualSetVersi2(Tail(H1), Rember(FirstElmt(H1),H2))
         else:
             return False
-# print(IsEqualSetVersi2([1,2,3],[2,3,4,5]))
 
 def IsIntersect(H1,H2):
     if IsEmpty(H1):
@@ -146,8 +143,7 @@ def IsIntersect(H1,H2):
             return True
         else:
             return IsIntersect(Tail(H1),H2)
-print(IsIntersect([1,2,3],[1,4,5]))     
-#print(IsIntersect([6,9],[1,2,3]))
+
 
 # DEFINISI DAN SPESIFIKASI OPERASI TERHADAP HIMPUNAN
 # MakeIntersect : 2 set --> set
@@ -171,7 +167,6 @@ def MakeIntersectVersi1(H1,H2):
         else:
             return MakeIntersectVersi1(Tail(H1),H2)
 
-#print(MakeIntersectVersi1([1,2,3],[3,4,5]))
 
 def MakeIntersectVersi2(H1,H2):
     if IsEmpty(H2):
@@ -182,7 +177,6 @@ def MakeIntersectVersi2(H1,H2):
                     MakeIntersectVersi1(H1,Tail(H2)))
         else:
             return MakeIntersectVersi1(H1,Tail(H2))
-
 
  
 def MakeUnionVersi1(H1,H2):
@@ -195,7 +189,6 @@ def MakeUnionVersi1(H1,H2):
         else:
             return Konso(FirstElmt(H1),MakeUnionVersi1(Tail(H1),H2))
         
-print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
 
 def MakeUnionVersi2(H1,H2):
     if IsEmpty(H2):
@@ -206,14 +199,47 @@ def MakeUnionVersi2(H1,H2):
                     MakeUnionVersi1(Rember(FirstElmt(H2),H1),Tail(H2)))
         else:
             return Konso(FirstElmt(H2),MakeUnionVersi1(H1,Tail(H2)))
-        
+
 def NBIntersect(H1,H2):
     return NbElmt(MakeIntersectVersi1(H1,H2))
 
-#print(NBIntersect([1,2,3],[1,2,3,4]))
 
 def NBUnion(H1,H2):
     return NbElmt(MakeUnionVersi1(H1,H2))
+
+
+# APLIKASI
+print(Rember(2,[1,2,2]))
+
+print(Rember2(2,[2,2,3,4,5]))
+
+print(MultiRember(2,[1,2,4,2]))
+
+print(MakeSetVersi1([1,2,2,2,2,4]))
+
+print(MakeSetVersi2([1,4,4,2,5,5]))
+
+print(KonsoSet(3,[1,2]))
+
+print(IsSet([2,3,4,5,2]))
+
+print(IsSubset([1,2],[1,4,2,5]))
+
+print(IsEqualSetVersi1([1,2],[1,2]))
+
+print(IsEqualSetVersi2([1,2,3],[2,3,4,5]))
+
+print(IsIntersect([1,2,3],[1,4,5]))  
+
+print(MakeIntersectVersi1([1,2,3],[3,4,5]))
+
+print(MakeIntersectVersi2([1,2,3],[2,4,5,3]))
+
+print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
+
+print(MakeUnionVersi2([1,2,3],[3,4,5,1]))
+
+print(NBIntersect([1,2,3],[1,2,3,4]))
 
 print(NBUnion([1,2,3],[4,2,3]))
         
