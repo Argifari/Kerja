@@ -1,5 +1,24 @@
-const _ = require('../node_modules/lodash');
- 
-const myOddEvenArray = _.partition([1, 2, 3, 4, 5, 6], (n) => n % 2);
- 
-console.log(myOddEvenArray);
+const fs = require('fs');
+
+const writeMyStream = fs.createWriteStream('./CodingIsFun/Untitled-1.txt');
+
+writeMyStream.write('Ini merupakan baris pertama\n');
+writeMyStream.end('inilah akhirnya\n');
+
+const readAble = fs.createReadStream('./CodingIsFun/Untitled-1.txt' , {
+    highWaterMark : 10
+});
+
+readAble.on('readable', () => {
+    try {
+        process.stdout.write(`[${readAble.read()}]`);
+    }
+    catch(error){
+
+    }
+});
+
+readAble.on('end', () => {
+    console.log('done');
+});
+
