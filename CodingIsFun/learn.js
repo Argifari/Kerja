@@ -1,24 +1,17 @@
-const fs = require('fs');
+const http = require('http');
 
-const writeMyStream = fs.createWriteStream('./CodingIsFun/Untitled-1.txt');
+const requestListener = (request, response) => {
+    response.setHeader('Content-Type', 'text/html');
 
-writeMyStream.write('Ini merupakan baris pertama\n');
-writeMyStream.end('inilah akhirnya\n');
+    response.statusCode = 200;
+    response.end('<h1>Halo HTTP Server!<h1>');
+};
 
-const readAble = fs.createReadStream('./CodingIsFun/Untitled-1.txt' , {
-    highWaterMark : 10
+const server = http.createServer(requestListener);
+
+const port = 5000;
+const host = 'localhost';
+
+server.listen(port, host, () => {
+    console.log(`Server berjalan pada http://${host}:${port}`);
 });
-
-readAble.on('readable', () => {
-    try {
-        process.stdout.write(`[${readAble.read()}]`);
-    }
-    catch(error){
-
-    }
-});
-
-readAble.on('end', () => {
-    console.log('done');
-});
-
