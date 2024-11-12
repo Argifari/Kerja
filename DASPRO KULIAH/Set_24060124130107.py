@@ -174,9 +174,9 @@ def MakeIntersectVersi2(H1,H2):
     else:
         if IsMember(FirstElmt(H2),H1):
             return Konso(FirstElmt(H2), 
-                    MakeIntersectVersi1(H1,Tail(H2)))
+                    MakeIntersectVersi2(H1,Tail(H2)))
         else:
-            return MakeIntersectVersi1(H1,Tail(H2))
+            return MakeIntersectVersi2(H1,Tail(H2))
 
  
 def MakeUnionVersi1(H1,H2):
@@ -196,33 +196,27 @@ def MakeUnionVersi2(H1,H2):
     else:
         if IsMember(FirstElmt(H2),H1):
             return Konso(FirstElmt(H2),
-                    MakeUnionVersi1(Rember(FirstElmt(H2),H1),Tail(H2)))
+                    MakeUnionVersi2(Rember(FirstElmt(H2),H1),Tail(H2)))
         else:
-            return Konso(FirstElmt(H2),MakeUnionVersi1(H1,Tail(H2)))
+            return Konso(FirstElmt(H2),MakeUnionVersi2(H1,Tail(H2)))
 
 def NBIntersect(H1,H2):
-    return NbElmt(MakeIntersectVersi1(H1,H2))
-
-def NBIntersectnew(H1,H2):
     if IsEmpty(H2):
         return 0
     else:
         if IsMember(FirstElmt(H2),H1):
-            return 1 + NBIntersectnew(Rember(FirstElmt(H2),H1),Tail(H2))
+            return 1 + NBIntersect(Rember(FirstElmt(H2),H1),Tail(H2))
         else:
-            return NBIntersectnew(H1,Tail(H2))
+            return NBIntersect(H1,Tail(H2))
 
-def NBUnion(H1,H2):
-    return NbElmt(MakeUnionVersi1(H1,H2))
-
-def NBunionnew(H1,H2): 
+def NBUnion(H1,H2): 
     if IsEmpty(H1):
         return NbElmt(H2)
     else:
         if IsMember(FirstElmt(H1),H2):
-            return 1 + NBunionnew(Tail(H1),Rember(FirstElmt(H1),H2))
+            return 1 + NBUnion(Tail(H1),Rember(FirstElmt(H1),H2))
         else:
-            return 1 + NBunionnew(Tail(H1),H2)
+            return 1 + NBUnion(Tail(H1),H2)
 
 # APLIKASI
 print(Rember(2,[1,2,2]))
@@ -255,7 +249,7 @@ print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
 
 print(MakeUnionVersi2([1,2,3],[3,4,5,1]))
 
-print(NBIntersectnew([1,2,3],[1,2,3,4]))
+print(NBIntersect([1,2,3],[1,2,3,4]))
 
-print(NBunionnew([1,2,3],[4,2,3]))
+print(NBUnion([1,2,3],[4,2,3]))
         
