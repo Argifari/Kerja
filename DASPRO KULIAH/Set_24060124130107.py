@@ -203,6 +203,14 @@ def MakeUnionVersi2(H1,H2):
 def NBIntersect(H1,H2):
     return NbElmt(MakeIntersectVersi1(H1,H2))
 
+def NBIntersectnew(H1,H2):
+    if IsEmpty(H2):
+        return 0
+    else:
+        if IsMember(FirstElmt(H2),H1):
+            return 1 + NBIntersectnew(Rember(FirstElmt(H2),H1),Tail(H2))
+        else:
+            return NBIntersectnew(H1,Tail(H2))
 
 def NBUnion(H1,H2):
     return NbElmt(MakeUnionVersi1(H1,H2))
@@ -247,7 +255,7 @@ print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
 
 print(MakeUnionVersi2([1,2,3],[3,4,5,1]))
 
-print(NBIntersect([1,2,3],[1,2,3,4]))
+print(NBIntersectnew([1,2,3],[1,2,3,4]))
 
 print(NBunionnew([1,2,3],[4,2,3]))
         
