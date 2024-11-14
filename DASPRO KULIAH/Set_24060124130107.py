@@ -219,37 +219,37 @@ def NBUnion(H1,H2):
             return 1 + NBUnion(Tail(H1),H2)
 
 # APLIKASI
-print(Rember(2,[1,2,2]))
+# print(Rember(2,[1,2,2]))
 
-print(Rember2(2,[2,2,3,4,5]))
+# print(Rember2(2,[2,2,3,4,5]))
 
-print(MultiRember(2,[1,2,4,2]))
+# print(MultiRember(2,[1,2,4,2]))
 
-print(MakeSetVersi1([1,2,2,2,2,4]))
+# print(MakeSetVersi1([1,2,2,2,2,4]))
 
-print(MakeSetVersi2([1,4,4,2,5,5]))
+# print(MakeSetVersi2([1,4,4,2,5,5]))
 
-print(KonsoSet(3,[1,2]))
+# print(KonsoSet(3,[1,2]))
 
-print(IsSet([2,3,4,5,2]))
+# print(IsSet([2,3,4,5,2]))
 
-print(IsSubset([1,2],[1,4,2,5]))
+# print(IsSubset([1,2],[1,4,2,5]))
 
-print(IsEqualSetVersi1([1,2],[1,2]))
+# print(IsEqualSetVersi1([1,2],[1,2]))
 
-print(IsEqualSetVersi2([1,2,3],[2,3,4,5]))
+# print(IsEqualSetVersi2([1,2,3],[2,3,4,5]))
 
-print(IsIntersect([1,2,3],[1,4,5]))  
+# print(IsIntersect([1,2,3],[1,4,5]))  
 
-print(MakeIntersectVersi1([1,2,3],[3,4,5]))
+# print(MakeIntersectVersi1([1,2,3],[3,4,5]))
 
-print(MakeIntersectVersi2([1,2,3],[2,4,5,3]))
+# print(MakeIntersectVersi2([1,2,3],[2,4,5,3]))
 
-print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
+# print(MakeUnionVersi1([1,2,4],[1,2,5,7,8]))
 
-print(MakeUnionVersi2([1,2,3],[3,4,5,1]))
+# print(MakeUnionVersi2([1,2,3],[3,4,5,1]))
 
-print(NBIntersect([1,2,3],[1,2,3,4]))
+# print(NBIntersect([1,2,3],[1,2,3,4]))
 
-print(NBUnion([1,2,3],[4,2,3]))
+# print(NBUnion([1,2,3],[4,2,3]))
         

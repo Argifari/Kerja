@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "learn.js",
   "scripts": {
-    "start": "curl -X GET http://localhost:5000/",
+    "start": "node ./CodingIsFun/learn.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
