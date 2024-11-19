@@ -241,3 +241,25 @@ def MaxSumElmt(S):
         else:
             return max2(SumLOL(firstList(S)), MaxSumElmt(tailList(S)))
 
+# APLIKASI
+
+print(IsMemberLS([1,2],[1,2,[1,2]]))
+
+print(IsMemberS(3,[1,2,[3,4,5]]))
+
+print(RemberLOL(3,[1,2,3,[3,[3]]]))
+
+print(MaxLOL([1,2,3,[4,3,[12]]]))
+
+print(NBElmtAtom([1,2,3,[10,6,4,[8,9]]]))
+
+print(NBElmtList([[1,2,3],[7,4],5,10]))
+
+print(SumLOL([1,2,4,[5,[10,19]]]))
+
+print(MaxNBElmtlist([1,2,4,9,[10,24,19],[12],[6,7]]))
+
+print(MaxSumElmt([1,2,3,8,[10,11,12],[13,0]]))
+
+
+

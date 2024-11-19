@@ -1,33 +1,40 @@
-// let intro = document.querySelector('.intro');
-// let logo =document.querySelector('.logo-header');
-// let logoSpan = document.querySelectorAll('.logo');
+const route = [
+    {
+        method:'*',
+        path : '/',
+        handler: (request,h) => {
+            return `Halaman tidak dapat diakses dengan method tersebut`;
+        },
+    },
+    {
+        method: 'GET',
+        path : '/',
+        handler:(request, h) =>{
+            return 'Homepage';
+        },
+    },
+    {
+        method: 'GET',
+        path: '/about/{name?}',
+        handler: (request, h) => {
+            const { name = 'stranger'} = request.params;
+            const { lang } = request.query;
+            if (lang === 'id') {
+                return `ini tentang ${name} yang paling asli`;
+            }
+            return `ini tentang ${name}`;
+        },
+    },
+    {
+        method: '*',
+        path: '/about',
+        handler: (request,h) => {
+            return `Halaman tidak dapat diakses dengan method tersebut`;
+        },
 
-// window.addEventListener('DOMContentLoaded', ()=> {
+    }
     
-//     setTimeout (()=>{
-       
-//         logoSpan.forEach((span, idx)=>{
-//             setTimeout(()=>{
-//                 span.classList.add('active');
-//             }, (idx +1) * 400)
-//         });
 
-//         setTimeout(()=>{
-//             logoSpan.forEach((span, idx)=>{
+];
 
-//                 setTimeout(()=>{
-//                     span.classList.remove('active');
-//                     span.classList.add('fade');
-//                 },(idx +1)*50)
-//             })
-//         },2000)
-
-//         setTimeout(()=>{
-//             intro.style.top ='-100vh';
-//         },2300)
-//     })
-// }) 
-
-const ayam = 'babi';
-module.exports = ayam;
-
+module.exports = route;
