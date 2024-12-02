@@ -4,12 +4,29 @@
 # Tanggal : 1 Oktober 2024
 # Pembuat : Muhammad Firdaus Argifari 24060124130107
 
+
+# DEFINISI DAN SPESIFIKASI KONSTRUKTOR
+# makePB : Elemen, 2PohonBiner --> PohonBiner
+# {makePB(A,L,R) membentuk sebuah pohon biner dengan notasi prefix.}
+
+# REALISASI
+
 def makePB(A,L,R) :
     return [A,L,R]
 
 def Konso(x,L):
     return x + L
  
+# DEFIISI DAN SPESIFIKASI SELEKTOR
+# Akar : PohonBiner --> Elemen
+# {Akar(P) mengembalikan Akar dari P yang berupa elemen.}
+# Left : PohonBiner --> PohonBiner
+# {Left(P) mengembalikan anak kiri P yang berupa pohon biner.}
+# Right : PohonBiner --> PohonBiner
+# {Right(P) mengembalikan anak kanan yang berupa pohon biner.}
+
+# REALISASI
+
 def Akar(P):
     return P[0]
 
@@ -18,6 +35,20 @@ def Left(P):
 
 def Right(P):
     return P[2]
+
+# DEFINISI DAN SPESIFIKASI PREDIKAT TERHADAP POHON BINER
+# IsBiner : PohonBiner --> boolean
+# {IsBiner(P) bernilai benar jika pohon biner P memiliki anak kanan dan kiri.}
+# IsUnerLeft : PohonBiner --> boolean
+# {IsUnerLeft(P) bernilai benar jika pohon biner P hanya memiliki anak kiri.}
+# IsUnerRight : PohonBiner --> boolean
+# {IsUnerRight(P) bernilai benar jika pohon biner hanya memiliki anak kanan.}
+# IsTreeEmpty : PohonBiner --> boolean
+# {IsTreeEmpty(P) bernilai benar jika pohon biner P kosong.}
+# IsOneElmt : PohonBiner --> boolean
+# {IsOneElmt(P) bernilai benar jika pohon biner hanya berupa akar, tidak memiliki anak kanan dan kiri.}
+
+# REALISASI
 
 def IsBiner(P):
     return not IsTreeEmpty(Left(P)) and not IsTreeEmpty(Right(P))
@@ -33,6 +64,8 @@ def IsTreeEmpty(P):
 
 def IsOneELmt(P):
     return IsTreeEmpty(Left(P)) and IsTreeEmpty(Right(P))
+
+# DEFINISI DAN SPESIFIKASI FUNGSI OPERATOR TERHADAP POHON BINER
 
 def NbElmt(P):
     if IsTreeEmpty(P):
@@ -263,6 +296,12 @@ def MakeListLevel(P,N):
 def IsEmpty(L):
     return L == []
 
+# DEFINISI DAN SPESIFIKASI FUNGSI OPERATOR TERHADAP BINARY SEARCH TREEE
+# BSearchX : BinSearchTree, Elemen --> boolean
+# {BSeacrhX(P,X) bernilai benar jika node yang bernilai X ada pada Binary Search Tree P.}
+
+# REALISASI
+
 def BSearchX(P,X):
     if IsTreeEmpty(P):
         return False
@@ -273,6 +312,11 @@ def BSearchX(P,X):
     elif Akar(P) < X:
         return BSearchX(Right(P),X)
 
+# AddX : BinSearchTree, Elemen --> BinSearchTree
+# {AddX(P,X) menghasilkan sebuah pohon Binary Search Tree dengan tambahan node X. Belum ada 
+# node bernilai X pada P.}
+
+# REALISASI
 
 def AddX(P,X):
     if IsTreeEmpty(P):
@@ -288,11 +332,23 @@ def FirstElmt(L):
 def Tail(L):
     return L[1:]
 
+# ListToBst : list of Elemen, BinSearchTree --> BinSearchTree
+# {ListToBst(Ls,P) menghasilkan sebuah Pohon Binary Search Tree yang awalnya berupa list dengan setiap elemen 
+# unik}
+
+# REALISASI
+
 def ListToBst(Ls,P):
     if IsEmpty(Ls):
         return P
     else:
         return ListToBst(Tail(Ls),AddX(P,FirstElmt(Ls)))
+
+# MakeBinSearchTree : List of Elemen --> BinSearchTree
+# {MakeBinSearchTree(Ls) membentuk Pohon Binary Search Tree yang awalnya berupa list dengan setiap elemennya 
+# unik}
+
+# REALISASI
 
 def MakeBinSearchTree(Ls):
     if IsEmpty(Ls):
@@ -300,11 +356,21 @@ def MakeBinSearchTree(Ls):
     else:
         return ListToBst(Tail(Ls),makePB(FirstElmt(Ls),[],[]))
 
+# MinNode : BinSearchTree --> Elemen
+# {MinNode(P) mengembalikan Akar P sebagai pengganti Akar sebelumnya yang dihilangkan.}
+
+# REALISASI
+
 def MinNode(P):
     if IsTreeEmpty(Left(P)):
         return Akar(P)
     else:
         return MinNode(Left(P))
+# DelBtree : BinSearchTree, Elemen --> BinSearchTree
+# {DelBtree(P,X) menghasilkan sebuah Pohon BInary Search Tree tanpa node yang bernilai X. 
+# Node bernilai X pasti ada sebagai salah satu node P}
+
+# REALISASI
 
 def DelBtree(P,X):
     if Akar(P) == X:
