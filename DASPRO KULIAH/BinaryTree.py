@@ -127,7 +127,7 @@ def LevelOfX(P,X):
     elif Akar(P) == X :
         return 1
     else:
-        return Level(P,X,1)
+        return Level(P,X,0)
 
 #                    a          1
 #                b      d       2
@@ -257,16 +257,72 @@ def MakeListLevel(P,N):
     if IsTreeEmpty(P):
         return []
     else:
-        return ListLevel(P,N,1)
+        return ListLevel(P,N,0)
 
 # ----------------------------- BST ----------------------------4
+def IsEmpty(L):
+    return L == []
+
+def BSearchX(P,X):
+    if IsTreeEmpty(P):
+        return False
+    elif Akar(P) == X:
+        return True
+    elif Akar(P) > X:
+        return BSearchX(Left(P),X)
+    elif Akar(P) < X:
+        return BSearchX(Right(P),X)
 
 
+def AddX(P,X):
+    if IsTreeEmpty(P):
+        return makePB(X,[],[])
+    elif Akar(P) > X:
+        return makePB(Akar(P),AddX(Left(P),X),Right(P))
+    elif Akar(P) < X:
+        return makePB(Akar(P),Left(P),AddX(Right(P),X))
 
+def FirstElmt(L):
+    return L[0]
 
+def Tail(L):
+    return L[1:]
 
+def ListToBst(Ls,P):
+    if IsEmpty(Ls):
+        return P
+    else:
+        return ListToBst(Tail(Ls),AddX(P,FirstElmt(Ls)))
 
+def MakeBinSearchTree(Ls):
+    if IsEmpty(Ls):
+        return []
+    else:
+        return ListToBst(Tail(Ls),makePB(FirstElmt(Ls),[],[]))
 
+def MinNode(P):
+    if IsTreeEmpty(Left(P)):
+        return Akar(P)
+    else:
+        return MinNode(Left(P))
+
+def DelBtree(P,X):
+    if Akar(P) == X:
+        if IsBiner(P):
+            return makePB(MinNode(Right(P)),Left(P),DelBtree(Right(P),MinNode(Right(P))))
+        elif IsUnerLeft(P):
+            return makePB(Left(P),[],[])
+        elif IsUnerRight(P):
+            return makePB(Right(P),[],[])
+        elif IsOneELmt(P):
+            return []
+    elif Akar(P) > X:
+        return makePB(Akar(P),DelBtree(Left(P),X),Right(P))
+    elif Akar(P) < X:
+        return makePB(Akar(P),Left(P),DelBtree(Right(P),X))
+
+Bst = [15,[14,[12,[],[]],[]],[19,[18,[17,[],[]],[]],[21,[],[22,[],[]]]]]
+print(DelBtree(Bst,15))
 
 
 
