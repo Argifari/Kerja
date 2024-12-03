@@ -38,6 +38,11 @@ def NbElmt(L:list) -> int:
     else :
         return 1 + NbElmt(tail(L))
 
+
+# ======================================================= MATEMATIKA GURA ===================================================
+
+
+
 def Digit(X,Y):
     if is_empty(X) or is_empty(Y):
         return []
@@ -142,6 +147,10 @@ def shrimp(X, Y):
             return BesarMana(first_elmt(Digit(X,Y)),tail(Digit(X,Y)),'+','+') + penghitung(first_elmt(Digit(X,Y)),tail(Digit(X,Y)),0,'+','+'
                             ,BesarX(first_elmt(Digit(X,Y)),tail(Digit(X,Y))),last_elmt(X))
 
+
+# ===================================================== Geser List =================================================================
+
+
 def GeserList(L):
     if IsEmpty(L):
         return []
@@ -150,6 +159,8 @@ def GeserList(L):
             return KonsLo(FirstList(L), GeserList(TailList(L)))
         elif IsList(FirstList(L)):
             return KonsLi(GeserList(TailList(L)), FirstList(L))
+
+# ==================================================== Petualangan ======================================================================
 
 def EvaluateExpression(L):
     if IsEmpty(L):
@@ -164,6 +175,9 @@ def EvaluateExpression(L):
         elif operator(L) =='/':
             return (operand1(L) / operand2(L))
  
+# ==================================================================== PERPUSTAKAAN AGUNG ================================================
+
+
 def getTag(shelf):
     return FirstElmt(FirstList(shelf))
 
