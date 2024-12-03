@@ -66,6 +66,18 @@ def IsOneELmt(P):
     return IsTreeEmpty(Left(P)) and IsTreeEmpty(Right(P))
 
 # DEFINISI DAN SPESIFIKASI FUNGSI OPERATOR TERHADAP POHON BINER
+# NbElmt : PohonBiner --> integer >= 0
+# {NbElmt(P) memberikan banyaknya elemen dari pohon P.}
+# NbElmt1 : PohonBiner --> integer >= 0
+# {NbElmt1(P) memberikan banyaknya elemen dari pohon P basis 1.}
+# NbDaun : PohonBiner --> integer >= 0 
+# {NbDaun(P) memberikan banyaknya daun pada pohon P basis 0.}
+# NBdaun1 : PohonBiner --> integer >= 0
+# {NbDaun(P) memberikan banyaknya daun pada pohoon P basis 1.}
+# RepPrefix : PohonBiner --> List of Elemen
+# {RepPrefix(P) membentuk representasi pohon P menjadi list dengan penulisan secara prefix.}
+
+# REALISASI
 
 def NbElmt(P):
     if IsTreeEmpty(P):
@@ -109,7 +121,66 @@ def RepPrefix(P):
     elif IsUnerRight(P):
         return [Akar(P), [], RepPrefix(Right(P))]
     
+# DEFINISI DAN SPESIFIKASI FUNGSIONAL TERHADAP POHON BINER
+# IsMember : PohonBiner, Elemen --> boolean
+# {IsMember(P,X) bernilai benar jika ada node bernilai X pada pohon biner P.}
+# IsSkewLeft : PohonBiner --> boolean
+# {IsSkewLeft(P) bernilai benar jika P adalah pohon condong kiri.}
+# IsSkewRight : PohonBiner --> boolean
+# {IsSkewRight(P) bernilai benar jika P adalah pohon condong kanan.}
+# LevelOfX : PohonBiner,Elemen --> integer
+# {LevelOfX(P,X) mengembalikan level dari node X yang merupakan simpull pada pohon biner P.}
+# Level : PohonBiner, Elemen, integer --> integer
+# {Level(P,X,lvl) mengembalikan level dari node X pada pohon biner P.}
+# AddDaunTerkiri : PohonBiner, Elemen --> PohonBiner
+# {AddDaunTerkiri(P,X) mengembalikan pohon biner P dengan tambahan node X sebagai daun terkiri.}
+# AddDaun : PohonBiner tidak kosong, Elemen, Eleemn, boolean --> PohonBiner
+# {AddDaun(P,X,Y,Kiri) mengembalikan pohon biner P dengan Y sebagai anak kiri X(Kiri = true) atau 
+# Y sebagai anak kanan X(Kiri = false). X adalah simpul di pohon biner P.}
+# DelDaunTerkiri : PohonBiner tidak kosong --> <PohonBiner, Elemen>
+# {DelDaunTerkiri(P) mengembalikan pohon biner P dengan menghapus daun terkiri dan daun terkiri yang dihapus.}
+# Daun : PohobBiner --> PohonBiner
+# {Daun(P) mengembalikan pohon biner P dengan menghapus daun terkirinya.}
+# DaunTerkiri : PohonBiner --> Elemen
+# {DaunTerkiri(P) mengembalikan elemen daun terkiri pada pohon biner P.}
+# DelDaun : PohonBiner tidak kosong, elemen →  PohonBiner  
+# { DelDaun(P,X) dengan X adalah salah satu daun , menghasilkan sebuah pohon tanpa X 
+# yang semula adalah daun dari P} 
+ 
+ 
+# MakeListDaun : PohonBiner  →list Of Node  
+# {MakeListDaun(P) : } 
+# {Jika P adalah pohon kosong, maka menghasilkan list kosong.  
+# {Jika  P  bukan  pohon  kosong:  menghasilkan  list  yang  elemennya  adalah  semua  daun  
+# pohon P} 
+ 
+# MakeListPreOrder :  PohonBiner) →list Of Node  
+# {MakeListPreOrder(P) : } 
+# {Jika P adalah pohon kosong, maka menghasilkan list kosong. } 
+# {Jika  P  bukan  pohon  kosong:  menghasilkan  list  yang  elemennya  adalah  semua  node   
+# pohon P dengan urutan Preorder} 
+ 
+# MakeListPostOrder :  PohonBiner →list Of Node  
+# {MakeListPostOrder(P) : } 
+# {Jika P adalah pohon kosong, maka menghasilkan list kosong. } 
+# {Jika  P  bukan  pohon  kosong:  menghasilkan  list  yang  elemennya  adalah  semua  node   
+# pohon P dengan urutan PostOrder} 
+ 
+# MakeListInOrder :  PohonBiner →list Of Node  
+# {MakeListInOrder(P) : } 
+# {Jika P adalah pohon kosong, maka menghasilkan list kosong. } 
+# {Jika  P  bukan  pohon  kosong:  menghasilkan  list  yang  elemennya  adalah  semua  node   
+# pohon P dengan urutan InOrder} 
+ 
+# MakeListLevel : PohonBiner, integer →list Of Node  
+# {MakeListLevel(P,N) : } 
+# {Jika P adalah pohon kosong, maka menghasilkan list kosong. } 
+# {Jika  P  bukan  pohon  kosong:  menghasilkan  list  yang  elemennya  adalah  semua  node   
+# pohon P yang levelnya=N}
+# ListLevel : PohonBiner, 2integer --> list 
+# {ListLevel(P,N,lvl) mengembalikan list elemen dari pohon biner P yang levelnya sama dengan N.}
 
+# REALISASI
 
 def IsMember(P,X): 
     if IsTreeEmpty(P):
@@ -387,7 +458,13 @@ def DelBtree(P,X):
     elif Akar(P) < X:
         return makePB(Akar(P),Left(P),DelBtree(Right(P),X))
 
+# APLIKASI
+
 Bst = [15,[14,[12,[],[]],[]],[19,[18,[17,[],[]],[]],[21,[],[22,[],[]]]]]
+
+print(BSearchX(Bst,14))
+print(AddX(Bst,30))
+print(MakeBinSearchTree([12,23,13,5,9]))
 print(DelBtree(Bst,15))
 
 
