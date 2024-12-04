@@ -42,6 +42,7 @@ def NbElmt(L:list) -> int:
 # ======================================================= MATEMATIKA GURA ===================================================
 
 
+# fungsi digit berfungsi untuk membuat X dan Y memiliki digit yang sama. contoh [1,2] + [9] menjadi [1,2] + [0,9]
 
 def Digit(X,Y):
     if is_empty(X) or is_empty(Y):
@@ -53,6 +54,8 @@ def Digit(X,Y):
             return Digit(konso(0,X), Y)
         else:
             return [X] + Y
+
+# fungsi BesarMana mngembalikan tanda dari bilangan antara positif atau negatif dan tanda mengeikuti bilangan yang paling besar antara X dan Y.
 
 def BesarMana(X,Y,tandaX,tandaY):
     if is_empty(X):
@@ -69,6 +72,8 @@ def BesarMana(X,Y,tandaX,tandaY):
         else:
             return BesarMana(tail(X),tail(Y),tandaX,tandaY)
 
+# fungsi BesarX mengembalikan boolean untuk mengetahui apakah X lebih dari Y agar pengurangan tidak ada yang menjadi negatif
+
 def BesarX(X,Y):
     if is_empty(X):
         return False
@@ -79,11 +84,10 @@ def BesarX(X,Y):
             return False
         else:
             return BesarX(tail(X),tail(Y))
-        
-def kosong(a,b):
-    return a + b
 
-def penghitung(X,Y,e,tandaX,tandaY,b,cek):
+# fungsi penghitung untuk menghitung X dan Y tergantung dari tanda X dan tanda Y. parameter b adalah boolean dari hasil BesarX(X,Y). parameter e berguna untuk carry menyimpan data sebelumnya.
+
+def penghitung(X,Y,e,tandaX,tandaY,b):
     if is_empty(X):
         if e == 1:
             return [e]
@@ -92,23 +96,23 @@ def penghitung(X,Y,e,tandaX,tandaY,b,cek):
     else:
         if tandaX == '-' and tandaY == '-' or (tandaX == '+' and tandaY == '+'):
             if last_elmt(X) + last_elmt(Y) + e > 9:
-                return konsi(penghitung(head(X),head(Y),1,tandaX,tandaY,b,last_elmt(X) + last_elmt(Y) + e - 10), last_elmt(X) + last_elmt(Y) + e - 10)
+                return konsi(penghitung(head(X),head(Y),1,tandaX,tandaY,b), last_elmt(X) + last_elmt(Y) + e - 10)
             else :
-                return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b,(last_elmt(X) + last_elmt(Y) + e)), (last_elmt(X) + last_elmt(Y) + e))
+                return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b), (last_elmt(X) + last_elmt(Y) + e))
         elif tandaX == '-' and tandaY == '+' or (tandaX == '+' and tandaY == '-'):
             if b:
                 if last_elmt(X) >= last_elmt(Y):
-                    return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b,(last_elmt(X) - last_elmt(Y) + e) % 10), (last_elmt(X) - last_elmt(Y) + e) % 10)
+                    return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b), (last_elmt(X) - last_elmt(Y) + e) % 10)
                 else:
-                    return konsi(penghitung(head(X),head(Y),-1,tandaX,tandaY,b, 10 + last_elmt(X) - last_elmt(Y) + e), 10 + last_elmt(X) - last_elmt(Y) + e)
+                    return konsi(penghitung(head(X),head(Y),-1,tandaX,tandaY,b), 10 + last_elmt(X) - last_elmt(Y) + e)
                 
             else:
                 if last_elmt(Y) >= last_elmt(X):
-                    return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b,(last_elmt(Y) - last_elmt(X) + e) % 10), (last_elmt(Y) - last_elmt(X) + e) % 10)
+                    return konsi(penghitung(head(X),head(Y),0,tandaX,tandaY,b), (last_elmt(Y) - last_elmt(X) + e) % 10)
                 else:
-                    return konsi(penghitung(head(X),head(Y),-1,tandaX,tandaY,b,10 + last_elmt(Y) - last_elmt(X) + e), 10 + last_elmt(Y) - last_elmt(X) + e)
+                    return konsi(penghitung(head(X),head(Y),-1,tandaX,tandaY,b), 10 + last_elmt(Y) - last_elmt(X) + e)
 
-
+# fungsi hapus untuk menghapus angka 0 di awal list X. contoh [0,1,1] harusnya [1,1]
 
 def hapus(X):
     if is_empty(X):
@@ -133,19 +137,19 @@ def shrimp(X, Y):
     else:
         if first_elmt(X) == '-' and first_elmt(Y) == '-':
             return BesarMana(first_elmt(Digit(tail(X),tail(Y))),tail(Digit(tail(X),tail(Y))),'-','-') + penghitung(first_elmt(Digit(tail(X),tail(Y))),tail(Digit(tail(X),tail(Y))),0,'-','-'
-                             ,BesarX(first_elmt(Digit(tail(X),tail(Y))),tail(Digit(tail(X),tail(Y)))),last_elmt(X))
+                             ,BesarX(first_elmt(Digit(tail(X),tail(Y))),tail(Digit(tail(X),tail(Y)))))
         
         elif first_elmt(X) == '-' and first_elmt(Y) != '-':
             return BesarMana(first_elmt(Digit(tail(X),Y)),tail(Digit(tail(X),Y)),'-','+') + hapus(penghitung(first_elmt(Digit(tail(X),Y)),tail(Digit(tail(X),Y)),0,'-','+'
-                             ,BesarX(first_elmt(Digit(tail(X),Y)),tail(Digit(tail(X),Y))),last_elmt(X)))
+                             ,BesarX(first_elmt(Digit(tail(X),Y)),tail(Digit(tail(X),Y)))))
         
         elif first_elmt(X) != '-' and first_elmt(Y) == '-':
             return BesarMana(first_elmt(Digit(X,tail(Y))),tail(Digit(X,tail(Y))),'+','-') + hapus(penghitung(first_elmt(Digit(X,tail(Y))),tail(Digit(X,tail(Y))),0,'+','-'
-                              ,BesarX(first_elmt(Digit(X,tail(Y))),tail(Digit(X,tail(Y)))),last_elmt(X)))
+                              ,BesarX(first_elmt(Digit(X,tail(Y))),tail(Digit(X,tail(Y))))))
         
         else:
             return BesarMana(first_elmt(Digit(X,Y)),tail(Digit(X,Y)),'+','+') + penghitung(first_elmt(Digit(X,Y)),tail(Digit(X,Y)),0,'+','+'
-                            ,BesarX(first_elmt(Digit(X,Y)),tail(Digit(X,Y))),last_elmt(X))
+                            ,BesarX(first_elmt(Digit(X,Y)),tail(Digit(X,Y))))
 
 
 # ===================================================== Geser List =================================================================
@@ -212,4 +216,5 @@ def AddBooks(shelves, tag, book):
             return makeShelf(getTag(shelves), getBooks(shelves) + book) + TailList(shelves)
         else:
             return Konso(FirstList(shelves),AddBooks(TailList(shelves),tag,book))
+
 print(shrimp(['-',1,3],[1,2]))
