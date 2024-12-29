@@ -1,3 +1,66 @@
+
+
+# ============================================= DUEL SIHIR =================================================================
+
+# Nama : Muhammad Firdaus Argifari
+# Tanggal : 3 Desember 2024
+
+def FirstElmt(L):
+    return L[0]
+
+def LastElmt(L):
+    return L[-1]
+
+def Head(L):
+    return L[:-1]
+
+def Tail(L):
+    return L[1:]
+
+def Konso(e, L):
+    return [e] + L
+
+def isEmpty(L):
+    return L == []
+
+def dimensi(L): # atau NbElmt()
+    if isEmpty(L):
+        return 0
+    else:
+        return 1 + dimensi(Tail(L))
+
+# Skor : 2list, 2integer --> string
+# {Skor(S,M,pointsS,pointsM) menghitung jumlah skor dan mengembalikan siapa pemenangnya.}
+
+
+def Skor(S,M,pointS,pointM):
+    if isEmpty(S):
+        if pointM < pointS :
+            return 'Snape Menang'
+        elif pointM > pointS :
+            return 'McGonagall Menang'
+        elif pointS == pointM :
+            return 'Keduanya Seri'
+    elif FirstElmt(S) > FirstElmt(M):
+        return Skor(Tail(S),Tail(M),pointS + 1, pointM)
+    elif FirstElmt(S) < FirstElmt(M):
+        return Skor(Tail(S),Tail(M),pointS, pointM + 1)
+    elif FirstElmt(S) == FirstElmt(M):
+        return Skor(Tail(S),Tail(M),pointS,pointM)
+    
+# DuelSihir : 2 list --> string 
+# {DuelSihir(S,M) mengembalikan string sapa yang menang.}
+
+def DuelSihir(S, M):
+    if isEmpty(S):
+        return 'Keduanya Seri'
+    else:
+        return Skor(S,M,0,0)
+
+
+
+# ===================================================================== MATEMATIKA GURA ======================================================
+
 # Nama File: matematika_gura.py
 # Pembuat: 
 # Tanggal: 
@@ -41,7 +104,7 @@ def NbElmt(L:list) -> int:
 
 # ======================================================= MATEMATIKA GURA ===================================================
 
-
+# Digit : 2list --> <list of list,list>
 # fungsi digit berfungsi untuk membuat X dan Y memiliki digit yang sama. contoh [1,2] + [9] menjadi [1,2] + [0,9]
 
 def Digit(X,Y):
@@ -54,7 +117,8 @@ def Digit(X,Y):
             return Digit(konso(0,X), Y)
         else:
             return [X] + Y
-
+        
+# BesarMana : 2 list, 2 character --> list
 # fungsi BesarMana mngembalikan tanda dari bilangan antara positif atau negatif dan tanda mengeikuti bilangan yang paling besar antara X dan Y.
 
 def BesarMana(X,Y,tandaX,tandaY):
@@ -72,6 +136,7 @@ def BesarMana(X,Y,tandaX,tandaY):
         else:
             return BesarMana(tail(X),tail(Y),tandaX,tandaY)
 
+# BesarX : 2 list --> boolean
 # fungsi BesarX mengembalikan boolean untuk mengetahui apakah X lebih dari Y agar pengurangan tidak ada yang menjadi negatif
 
 def BesarX(X,Y):
@@ -84,7 +149,8 @@ def BesarX(X,Y):
             return False
         else:
             return BesarX(tail(X),tail(Y))
-
+        
+# penghitung : 2list,integer,2 character, boolean --> list
 # fungsi penghitung untuk menghitung X dan Y tergantung dari tanda X dan tanda Y. parameter b adalah boolean dari hasil BesarX(X,Y). parameter e berguna untuk carry menyimpan data sebelumnya.
 
 def penghitung(X,Y,e,tandaX,tandaY,b):
@@ -112,6 +178,7 @@ def penghitung(X,Y,e,tandaX,tandaY,b):
                 else:
                     return konsi(penghitung(head(X),head(Y),-1,tandaX,tandaY,b), 10 + last_elmt(Y) - last_elmt(X) + e)
 
+# hapus : list --> list
 # fungsi hapus untuk menghapus angka 0 di awal list X. contoh [0,1,1] harusnya [1,1]
 
 def hapus(X):
@@ -126,6 +193,8 @@ def hapus(X):
             return hapus(tail(X))
 
 
+# shrimp : 2 list --> list
+# fungsi shrimp menghitung bilangan seperti representasi gura secara list.
 
 def shrimp(X, Y):
     if is_empty(X) and is_empty(Y):
@@ -154,6 +223,71 @@ def shrimp(X, Y):
 
 # ===================================================== Geser List =================================================================
 
+#NAMA: Muhammad Firdaus Argifari
+#NIM : 24060124130107
+
+#Konstruktor
+# DEFINISI DAN SPESIFIKASI
+# KonsLo(e, L): elemen, List of List --> List of List
+# KonsLo(e, L) Menambahkan elemen di baris awal List of List
+def KonsLo(e, L):
+    return [e] + L
+
+# DEFINISI DAN SPESIFIKASI
+# KonsLi(L, e): List of List, elemen --> List of List
+# KonsLi(L, e) Menambah6y5ukan elemen di baris akhir List of List
+def KonsLi(L, e):
+    return L + [e]
+
+# Selektor
+
+# DEFINISI DAN SPESIFIKASI
+# FirstList(L): List of List --> elemen
+# FirstList(L) Menampilkan elemen pertama dari List of List
+def FirstList(L):
+    return L[0]
+
+# DEFINISI DAN SPESIFIKASI
+# LastList(L): List of List --> elemen
+# LastList(L) Menampilkan elemen terakhir dari List of List
+def LastList(L):
+    return L[-1]
+
+# DEFINISI DAN SPESIFIKASI
+# HeadList(L): List of List --> List of List
+# HeadList(L) List of List dengan menghilangkan elemen terakhirnya
+def HeadList(L):
+    return L[:-1]
+
+# DEFINISI DAN SPESIFIKASI
+# TailList(L): List of List --> List of List
+# TailList(L) List of List dengan menghilangkan elemen pertamanya
+def TailList(L):
+    return L[1:]
+
+# Predikat
+
+# DEFINISI DAN SPESIFIKASI
+# isEmpty(L): List of List --> boolean
+# isEmpty(L) mengecek apakah List of List kosong
+def IsEmpty(L):
+    return L == []
+
+# DEFINISI DAN SPESIFIKASI
+# IsAtom: List of List --> boolean
+# IsAtom Cek apakah S adalah atom atau bukan sebuah list
+def IsAtom(S):
+    return type(S) != list
+
+# DEFINISI DAN SPESIFIKASI
+# IsList: List of List --> boolean
+# IsList Cek apakah S adalah List
+def IsList(S):
+    return type(S) == list
+
+# DEFINISI DAN SPESIFIKASI
+# GeserList: List of List --> List of List
+# GeserList Fungsi merapikan perkakas milik Andi
 
 def GeserList(L):
     if IsEmpty(L):
@@ -164,7 +298,23 @@ def GeserList(L):
         elif IsList(FirstList(L)):
             return KonsLi(GeserList(TailList(L)), FirstList(L))
 
-# ==================================================== Petualangan ======================================================================
+# ==================================================== Petualangan Di Dunia Lumerion ======================================================================
+
+# operator : list --> character
+# {operator(L) mengembalikan operator dalam list.}
+def operator(L):
+    return L[0]
+# operand1 : list -->  integer
+# {operand1(L) mengembalikan elemen di dalam list pertama.}
+def operand1(L):
+    return L[1]
+# operand2 : list --> integer
+# {operand2(L) mengembalikan elemen di dalam list kedua.}
+def operand2(L):
+    return L[2]
+
+# EvaluateExpression : list --> real
+# {EvaluateExpression(L) menghitung elemen di dalam list sesuai dengan operatornya.}
 
 def EvaluateExpression(L):
     if IsEmpty(L):
@@ -206,6 +356,7 @@ def AddToShelf(tag, book):
 
 # AddBooks: shelves, string, list -> shelves
 # fungsi ini mengeluarkan shelves yang sudah ada dengan menambahkan buku ke sebuah shelf dengan tag tertentu
+
 def AddBooks(shelves, tag, book):
     if IsEmpty(book):
         return shelves
@@ -216,5 +367,3 @@ def AddBooks(shelves, tag, book):
             return makeShelf(getTag(shelves), getBooks(shelves) + book) + TailList(shelves)
         else:
             return Konso(FirstList(shelves),AddBooks(TailList(shelves),tag,book))
-
-print(shrimp(['-',1,3],[1,2]))

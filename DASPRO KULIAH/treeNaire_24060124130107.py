@@ -25,7 +25,7 @@ def akar(PN):
 # REALISASI
 
 def anak(PN):
-    return PN[1]
+    return PN[1:]
 
 # saudara : PohonN-ner --> list of PohonN-ner
 # {saudara(PN) mengembalikan list of pohon N-ner yang merupakan saudara atau yang 
@@ -104,7 +104,8 @@ def NbNDaunChild(PN):
         return NbNDaun(akar(PN)) + NbNDaunChild(saudara(PN)) 
     
 
-
+print(makePN('A',[makePN('B',[makePN('D',[]),makePN('E',[]),makePN('F',[])]),
+                 makePN('C',[makePN('G',[]),makePN('H',[makePN('I',[])])])]))
 
 # APLIKASI
 
@@ -118,13 +119,82 @@ print(NbNElmtTree(makePN('A',[makePN('B',[makePN('D',[]),makePN('E',[]),makePN('
 print(NbNDaun(makePN('A',[makePN('B',[makePN('D',[]),makePN('E',[]),makePN('F',[])]),
                  makePN('C',[makePN('G',[]),makePN('H',[makePN('I',[])])])])))
 
+def nyasar(PN,i):
+    print(i,PN)
+    if IsTreeEmpty(PN):
+        return 0
+    elif IsOneELmtTree(PN):
+        return 1
+    else:
+        return nyasar(anak(PN),i+1)
+    
+def cari(P,X):
+    if IsTreeEmpty(P):
+        return []
+    else:
+        if akar(P) == X:
+            return [akar(P)] + anak(P)
+        else:
+            return cari(anak(P)[0],X) + carichild(anak(P)[1:],X)
+
+def carichild(P,X):
+    if IsTreeEmpty(0):
+        return []
+    else:
+        return cari(akar(P),X) + carichild(saudara(anak(P)),X)
+        
+pn = makePN('A',
+            [makePN('R',
+                    [makePN('G',[]),
+                     makePN('I',[])
+                     ,makePN('F',[])])
+            ,makePN('M'
+                    ,[makePN('U',[])
+                    ,makePN('H',
+                            [makePN('D',[])])
+                    ,makePN('1',[])])])
+
+f2 = lambda x : x % 5 == 0
+f3 = lambda x : x % 5 != 0   
+
+def Filter_List(L,f):
+    if IsTreeEmpty(L):
+        return []
+    else:
+        if f(L[0]) :
+            return [L[0]] + Filter_List(L[1:],f)
+        else:
+            return Filter_List(L[1:],f)
+
+L1 = [60, 18,7,20,19,23,50]
+print(Filter_List(L1,f3))
+
+empat = lambda x :  x % 4 == 0
+
+def dibagi(P,empat):
+    if IsTreeEmpty(P) : return False
+    elif not IsTreeEmpty(P[2]) : return dibagi(P[2],empat)
+    else:
+        return empat(akar(P))
+    
+
+p = [15,[9,[8,[],[]],[12,[],[]]],[20,[16,[],[]],[24,[],[]]]]
+
+print(dibagi(p,empat))
 
 
 
+f = lambda x,y : x if x >= y else y
 
+bst = [10,[2,[1,[],[]],[7,[],[9,[],[]]]],[20,[11,[],[]],[24,[21,[],[]],[]]]]
+def MaxNilaiKiri(P,f,lvl) :
+    if lvl == 1 :
+        if not IsTreeEmpty(P[1]) : 
+            return MaxNilaiKiri(P[1], f, lvl + 1)
+        else:
+            return akar(P)
+    elif IsTreeEmpty(P) : return 0
+    else :
+        return f(akar(P),MaxNilaiKiri(P[2], f, lvl + 1)) 
 
-
-
-
-
-
+print(MaxNilaiKiri(bst,f,1))
